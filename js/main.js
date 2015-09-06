@@ -22,6 +22,11 @@ $(document).ready(function(){
   //killers text
   var killers = s.image('images/killers.png', 400, -150, 200, 55);
 
+  //prescription text
+  var prescription = s.image('images/prescription.png', 1920/2, 0, 356, 85);
+
+  //prescription text
+  var deaths = s.image('images/deaths.png', 1920/2, 0, 356, 85);
 
   //beginning animation
   var phase1 = function(){
@@ -81,12 +86,18 @@ $(document).ready(function(){
       transform: bottleMatrix
     },3000);
   };
-  var phase5 = function(){};
-  var phase6 = function(){};
+  var phase5 = function(){
+    prescription.animate({x:300}, 2000);
+  };
+  var phase6 = function(){
+    prescription.animate({x:3000}, 2000);
+    deaths.animate({x:300}, 3000);
+  };
 
   phase1();
   setTimeout(phase2, 5000);
   setTimeout(phase3, 10000);
   setTimeout(phase4, 12000);
   setTimeout(phase5, 15000);
+  setTimeout(phase6, 18000);
 });
