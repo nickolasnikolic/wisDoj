@@ -3,7 +3,7 @@ $(document).ready(function(){
   var s = Snap('#doj');
   //layout elements
   //img
-  var bg = s.image('images/overdose.jpg', 0,-500,1920,1285);
+  var bg = s.image('images/overdose.jpg', 0,-300,1920/2,1285/2);
   //dots
   var dot1 = s.image('images/dot.png', 150, -150, 35, 35);
   var dot2 = s.image('images/dot.png', 180, -150, 35, 35);
@@ -15,10 +15,13 @@ $(document).ready(function(){
   var dot8 = s.image('images/dot.png', 360, -150, 35, 35);
   //pain text
   var pain = s.image('images/pain.png', 15, 15, 130, 55);
+
+  //pill bottle
+  var bottle = s.image('images/pillBottle.png', 1920/2, -250, 300, 500);
+
   //killers text
   var killers = s.image('images/killers.png', 400, -150, 200, 55);
-  //pill bottle
-  var bottle = s.image('images/pillBottle.png', 1920, -250, 300, 500);
+
 
   //beginning animation
   var phase1 = function(){
@@ -26,7 +29,7 @@ $(document).ready(function(){
 
     pain.animate({
       opacity: 1
-    },1000);
+    },3000);
   };
 
   var phase2 = function(){
@@ -46,25 +49,39 @@ $(document).ready(function(){
     },1000);
   };
 
-  //everything in the first 5 seconds
   var phase4 = function(){
     //set animation of the background image
     var bgMatrix = new Snap.Matrix();
     bgMatrix.scale( 0.3 );
-    bgMatrix.translate(-500,-300);
+    bgMatrix.translate(-150,150);
     bg.animate({
       transform: bgMatrix
     }, 3000);
-  };
-  var phase5 = function(){
+
+    pain.animate({
+      x: -3000
+    },3000);
+
+    killers.animate({ x: -3000 }, 3000 );
+
+    dot1.animate({ x: -3000 }, 3000 );
+    dot2.animate({ x: -3000 }, 3000 );
+    dot3.animate({ x: -3000 }, 3000 );
+    dot4.animate({ x: -3000 }, 3000 );
+    dot5.animate({ x: -3000 }, 3000 );
+    dot6.animate({ x: -3000 }, 3000 );
+    dot7.animate({ x: -3000 }, 3000 );
+    dot8.animate({ x: -3000 }, 3000 );
+
     var bottleMatrix = new Snap.Matrix();
-    bottleMatrix.scale( 0.15 );
-    bottleMatrix.translate( 600, 275 );
+    bottleMatrix.scale( 0.175 );
+    bottleMatrix.translate( 425, 270 );
 
     bottle.animate({
       transform: bottleMatrix
     },3000);
   };
+  var phase5 = function(){};
   var phase6 = function(){};
 
   phase1();
