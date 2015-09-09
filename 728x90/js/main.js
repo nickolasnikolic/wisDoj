@@ -44,7 +44,7 @@ $(document).ready(function(){
   var painKillers = s.image('images/painKillers.png', 15, 30, 200, 30);
   painKillers.attr({opacity: 0});
 
-  var takePledge = s.image('images/takePledge.png', 518, -10, 118, 36);
+  var takePledge = s.image('images/takePledge.png', 513, 0, 118, 36);
   takePledge.attr({opacity: 0});
 
   //beginning animation
@@ -67,7 +67,7 @@ $(document).ready(function(){
 
   var phase3 = function(){
     killers.animate({ y: 15 },550, mina.easeout);
-    bottle.animate({ x: 585 },1300, mina.easein);
+    bottle.animate({ x: 585 },700, mina.easein);
   };
 
   var phase4 = function(){
@@ -104,11 +104,11 @@ $(document).ready(function(){
 
   };
   var phase5 = function(){
-    prescription.animate({y:0}, 300, mina.easein);
+    prescription.animate({y:0}, 200, mina.easein);
   };
   var phase6 = function(){
     prescription.animate({y:-250}, 300, mina.easeout);
-    deaths.animate({y:0}, 700, mina.easein);
+    deaths.animate({y:0}, 200, mina.easein);
   };
   var phase7 = function(){
     deaths.animate({y:-250}, 500, mina.easeout);
@@ -117,22 +117,19 @@ $(document).ready(function(){
   var phase8 = function(){
     reality.animate({y:15}, 600, mina.easeout);
     pledge.animate({opacity: 1}, 4000, mina.easeout);
-    prevent.animate({x:540}, 800, mina.easeout);
   };
 
   var phase9 = function(){
-    pledge.animate({opacity:0},3250, mina.easeinout);
-    painKillers.attr({opacity: 1});
-    takePledge.attr({opacity: 1});
+    prevent.animate({x:540}, 600, mina.easeout);
   };
 
   phase1();
-  setTimeout(phase2, 3000);
-  setTimeout(phase3, 4000);
-  setTimeout(phase4, 6000);
-  setTimeout(phase5, 7500);
-  setTimeout(phase6, 9000);
-  setTimeout(phase7, 11500);
-  setTimeout(phase8, 12500);
-  //setTimeout(phase9, 21000);
+  setTimeout(phase2, 2300);
+  setTimeout(phase3, 3000);
+  setTimeout(phase4, 4500);
+  setTimeout(phase5, 6500);
+  setTimeout(phase6, 8380);
+  setTimeout(phase7, 9800);
+  setTimeout(phase8, 10200);
+  setTimeout(phase9, 10800);
 });

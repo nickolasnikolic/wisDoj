@@ -8,31 +8,28 @@ $(document).ready(function(){
   var s = Snap('#doj');
   //layout elements
   //img
-  var bg = s.image('images/overdose.jpg', 0,-300,1920/2,1285/2);
+  var bg = s.image('images/overdose.jpg', -200,-100,1920/3.2,1285/3.2);
   //dots
-  var dot1 = s.image('images/dot.png', 150, -150, 35, 35);
-  var dot2 = s.image('images/dot.png', 180, -150, 35, 35);
-  var dot3 = s.image('images/dot.png', 210, -150, 35, 35);
-  var dot4 = s.image('images/dot.png', 240, -150, 35, 35);
-  var dot5 = s.image('images/dot.png', 270, -150, 35, 35);
-  var dot6 = s.image('images/dot.png', 300, -150, 35, 35);
-  var dot7 = s.image('images/dot.png', 330, -150, 35, 35);
-  var dot8 = s.image('images/dot.png', 360, -150, 35, 35);
+  var dot1 = s.image('images/dot.png', 150, -150, 25, 25);
+  var dot2 = s.image('images/dot.png', 180, -150, 25, 25);
+  var dot3 = s.image('images/dot.png', 210, -150, 25, 25);
+  var dot4 = s.image('images/dot.png', 240, -150, 25, 25);
+
   //pain text
-  var pain = s.image('images/pain.png', 15, 15, 130, 55);
+  var pain = s.image('images/pain.png', 15, 75, 130, 55);
   pain.attr({opacity: 0});
 
   //pill bottle
-  var bottle = s.image('images/pillBottle.png', 1920/2, -250, 300, 500);
+  var bottle = s.image('images/pillBottle.png', 300, 20, 150, 325);
 
   //killers text
-  var killers = s.image('images/killers.png', 400, -150, 200, 55);
+  var killers = s.image('images/killers.png', 15, 350, 200, 55);
 
   //prescription text
-  var prescription = s.image('images/prescription.png', 1920/2, 0, 356, 85);
+  var prescription = s.image('images/prescription.png', 300, -200, 356, 85);
 
   //prescription text
-  var deaths = s.image('images/deaths.png', 1920/2, 0, 356, 85);
+  var deaths = s.image('images/deaths.png', 300, -200, 356, 85);
 
   var pledge = s.image('images/pledge.png', 20, 25, 212, 40);
   pledge.attr({opacity: 0});
@@ -44,7 +41,7 @@ $(document).ready(function(){
   var painKillers = s.image('images/painKillers.png', 15, 30, 200, 30);
   painKillers.attr({opacity: 0});
 
-  var takePledge = s.image('images/takePledge.png', 568, -10, 118, 36);
+  var takePledge = s.image('images/takePledge.png', 518, -10, 118, 36);
   takePledge.attr({opacity: 0});
 
   //beginning animation
@@ -55,30 +52,34 @@ $(document).ready(function(){
   };
 
   var phase2 = function(){
-    dot1.animate({ y: 30 }, 2000, mina.elastic );
-    dot2.animate({ y: 30 }, 5000, mina.elastic );
-    dot3.animate({ y: 30 }, 4000, mina.elastic );
-    dot4.animate({ y: 30 }, 5000, mina.elastic );
-    dot5.animate({ y: 30 }, 3000, mina.elastic );
-    dot6.animate({ y: 30 }, 1000, mina.elastic );
-    dot7.animate({ y: 30 }, 3000, mina.elastic );
-    dot8.animate({ y: 30 }, 1000, mina.elastic );
+    dot1.animate({ y: 103 }, 500, mina.bounce );
+    dot2.animate({ y: 103 }, 750, mina.bounce );
+    dot3.animate({ y: 103 }, 1000, mina.bounce );
+    dot4.animate({ y: 103 }, 1250, mina.bounce );
   };
 
   var phase3 = function(){
-    killers.animate({
-      y: 15
-    },1000, mina.bounce);
+    killers.animate({ y: 150 },550, mina.easeout);
+    bottle.animate({ x: 400 },1300, mina.easein);
   };
 
   var phase4 = function(){
+    var bottleMatrix2 = new Snap.Matrix();
+    bottleMatrix2.scale( 0.22 );
+    bottleMatrix2.translate( -270, 200);
+
+    bottle.animate({
+      x: 1400,
+      transform: bottleMatrix2
+    },1500, mina.easeout);
+
     //set animation of the background image
     var bgMatrix = new Snap.Matrix();
-    bgMatrix.scale( 0.3 );
-    bgMatrix.translate(-150,150);
+    bgMatrix.scale( 0.8 );
+    bgMatrix.translate(-10,80);
     bg.animate({
       transform: bgMatrix
-    }, 3000, mina.easeout);
+    }, 1500, mina.easeout);
 
     pain.animate({
       x: -3000
@@ -95,44 +96,37 @@ $(document).ready(function(){
     dot7.animate({ x: -3000 }, 3000, mina.easeout );
     dot8.animate({ x: -3000 }, 3000, mina.easeout );
 
-    var bottleMatrix = new Snap.Matrix();
-    bottleMatrix.scale( 0.175 );
-    bottleMatrix.translate( 425, 250 );
-
-    bottle.animate({
-      transform: bottleMatrix
-    },3000, mina.easeout);
   };
   var phase5 = function(){
-    prescription.animate({x:300}, 2000, mina.bounce);
+    prescription.animate({y:0}, 4000, mina.easein);
   };
   var phase6 = function(){
-    prescription.animate({x:3000}, 2000, mina.easein);
-    deaths.animate({x:300}, 2000, mina.bounce);
+    prescription.animate({y:-250}, 3500, mina.easeout);
+    deaths.animate({y:0}, 4000, mina.easein);
   };
   var phase7 = function(){
-    deaths.animate({x:3000}, 2000, mina.easeout);
-    pledge.animate({opacity: 1}, 2000, mina.easeout);
-    reality.animate({y:15}, 1200);
+    deaths.animate({y:-250}, 3500, mina.easeout);
   };
 
   var phase8 = function(){
-    prevent.animate({x:540}, 2000, mina.easein);
+    reality.animate({y:15}, 600, mina.easeout);
+    pledge.animate({opacity: 1}, 4000, mina.easeout);
+    prevent.animate({x:540}, 800, mina.easeout);
   };
 
   var phase9 = function(){
-    pledge.animate({opacity:0},1000, mina.easeinout);
-    painKillers.animate({opacity: 1}, 3000, mina.easeout);
-    takePledge.animate({opacity: 1}, 3000, mina.easeout);
+    pledge.animate({opacity:0},3250, mina.easeinout);
+    painKillers.attr({opacity: 1});
+    takePledge.attr({opacity: 1});
   };
 
   phase1();
   setTimeout(phase2, 3000);
   setTimeout(phase3, 4000);
-  setTimeout(phase4, 8000);
-  setTimeout(phase5, 13000);
-  setTimeout(phase6, 16000);
-  setTimeout(phase7, 20000);
+  setTimeout(phase4, 5000);
+  setTimeout(phase5, 5500);
+  setTimeout(phase6, 13000);
+  setTimeout(phase7, 19000);
   setTimeout(phase8, 22000);
-  setTimeout(phase9, 24000);
+  //setTimeout(phase9, 21000);
 });
