@@ -23,7 +23,7 @@ $(document).ready(function(){
   pain.attr({opacity: 0});
 
   //pill bottle
-  var bottle = s.image('images/pillBottle.png', 1920/2, -200, 200, 400);
+  var bottle = s.image('images/pillBottle.png', 1920/2, -120, 160, 280);
 
   //killers text
   var killers = s.image('images/killers.png', 400, -150, 200, 55);
@@ -67,17 +67,16 @@ $(document).ready(function(){
 
   var phase3 = function(){
     killers.animate({ y: 15 },550, mina.easeout);
-    bottle.animate({ x: 400 },1300, mina.easein);
+    bottle.animate({ x: 585 },1300, mina.easein);
   };
 
   var phase4 = function(){
-    var bottleMatrix2 = new Snap.Matrix();
-    bottleMatrix2.scale( 0.22 );
-    bottleMatrix2.translate( -270, 200);
+    var bottleMatrix = new Snap.Matrix();
+    bottleMatrix.scale( 0.3 );
+    bottleMatrix.translate( 240, 126);
 
     bottle.animate({
-      x: 1400,
-      transform: bottleMatrix2
+      transform: bottleMatrix
     },1500, mina.easeout);
 
     //set animation of the background image
@@ -105,20 +104,20 @@ $(document).ready(function(){
 
   };
   var phase5 = function(){
-    prescription.animate({y:0}, 4200, mina.easein);
+    prescription.animate({y:0}, 300, mina.easein);
   };
   var phase6 = function(){
-    prescription.animate({y:-250}, 4200, mina.easeout);
-    deaths.animate({y:0}, 4200, mina.easein);
+    prescription.animate({y:-250}, 300, mina.easeout);
+    deaths.animate({y:0}, 700, mina.easein);
   };
   var phase7 = function(){
-    deaths.animate({y:-250}, 4200, mina.easeout);
+    deaths.animate({y:-250}, 500, mina.easeout);
   };
 
   var phase8 = function(){
-    reality.animate({y:15}, 200, mina.easeout);
+    reality.animate({y:15}, 600, mina.easeout);
     pledge.animate({opacity: 1}, 4000, mina.easeout);
-    prevent.animate({x:540}, 500, mina.easeout);
+    prevent.animate({x:540}, 800, mina.easeout);
   };
 
   var phase9 = function(){
@@ -130,10 +129,10 @@ $(document).ready(function(){
   phase1();
   setTimeout(phase2, 3000);
   setTimeout(phase3, 4000);
-  setTimeout(phase4, 5000);
-  setTimeout(phase5, 5500);
-  setTimeout(phase6, 13000);
-  setTimeout(phase7, 19000);
-  setTimeout(phase8, 22000);
+  setTimeout(phase4, 6000);
+  setTimeout(phase5, 7500);
+  setTimeout(phase6, 9000);
+  setTimeout(phase7, 11500);
+  setTimeout(phase8, 12500);
   //setTimeout(phase9, 21000);
 });
