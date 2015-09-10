@@ -70,7 +70,7 @@ $(document).ready(function(){
   var phase4 = function(){
     var bottleMatrix = new Snap.Matrix();
     bottleMatrix.scale( 0.6 );
-    bottleMatrix.translate( 60, 260);
+    bottleMatrix.translate( 50, 260);
 
     bottle.animate({
       transform: bottleMatrix
@@ -101,14 +101,23 @@ $(document).ready(function(){
     prescription.animate({x:5}, 200, mina.easein);
   };
   var phase6 = function(){
-    prescription.animate({x:5}, 200, mina.easeout);
-    deaths.animate({y:0}, 4000, mina.easein);
+    prescription.animate({x:160}, 200, mina.easeout);
+    deaths.animate({x:0}, 200, mina.easein);
   };
   var phase7 = function(){
-    deaths.animate({y:-250}, 3500, mina.easeout);
+    deaths.animate({x:200}, 200, mina.easeout);
   };
 
   var phase8 = function(){
+
+    var bottleMatrix = new Snap.Matrix();
+    bottleMatrix.scale( 0.2 );
+    bottleMatrix.translate( 50, 2250);
+
+    bottle.animate({
+      transform: bottleMatrix
+    },1500, mina.easeout);
+
     reality.animate({y:15}, 600, mina.easeout);
     pledge.animate({opacity: 1}, 4000, mina.easeout);
     prevent.animate({x:540}, 800, mina.easeout);
@@ -125,9 +134,8 @@ $(document).ready(function(){
   setTimeout(phase3, 4000);
   setTimeout(phase4, 5000);
   setTimeout(phase5, 5500);
-  /*
   setTimeout(phase6, 13000);
   setTimeout(phase7, 19000);
   setTimeout(phase8, 22000);
-  setTimeout(phase9, 21000);*/
+  /*setTimeout(phase9, 21000);*/
 });
