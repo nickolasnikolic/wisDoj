@@ -1,8 +1,6 @@
 $(document).ready(function(){
 
-  $('#container').click(function(){
-    window.location = 'http://example.com';
-  });
+  //$('#container').click(function(){ window.location = 'http://example.com'; });
 
   //set the stage
   var s = Snap('#doj');
