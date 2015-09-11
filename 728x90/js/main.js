@@ -107,11 +107,11 @@ $(document).ready(function(){
     prescription.animate({y:0}, 200, mina.easein);
   };
   var phase6 = function(){
-    prescription.animate({y:-250}, 300, mina.easeout);
+    prescription.animate({y:250}, 300, mina.easeout);
     deaths.animate({y:0}, 200, mina.easein);
   };
   var phase7 = function(){
-    deaths.animate({y:-250}, 500, mina.easeout);
+    deaths.animate({y:250}, 500, mina.easeout);
   };
 
   var phase8 = function(){
@@ -129,7 +129,7 @@ $(document).ready(function(){
   setTimeout(phase4, 4500);
   setTimeout(phase5, 6500);
   setTimeout(phase6, 8380);
-  setTimeout(phase7, 9800);
-  setTimeout(phase8, 10200);
-  setTimeout(phase9, 10800);
+  setTimeout(phase7, 10300);
+  setTimeout(phase8, 10300);
+  setTimeout(phase9, 11800);
 });

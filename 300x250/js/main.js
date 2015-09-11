@@ -15,20 +15,20 @@ $(document).ready(function(){
   rectangle.attr({fill: '#fff'});
 
   //pill bottle
-  var bottle = s.image('images/pillBottle.png', 300, 20, 150, 275);
+  var bottle = s.image('images/pillBottle.png', 300, -20, 147, 277);
 
   //dots
-  var dot1 = s.image('images/dot.png', 150, -150, 25, 25);
-  var dot2 = s.image('images/dot.png', 180, -150, 25, 25);
-  var dot3 = s.image('images/dot.png', 210, -150, 25, 25);
-  var dot4 = s.image('images/dot.png', 240, -150, 25, 25);
+  var dot1 = s.image('images/dot.png', 130, -150, 15, 15);
+  var dot2 = s.image('images/dot.png', 149, -150, 15, 15);
+  var dot3 = s.image('images/dot.png', 168, -150, 15, 15);
+  var dot4 = s.image('images/dot.png', 187, -150, 15, 15);
 
   //pain text
-  var pain = s.image('images/pain.png', 15, 75, 130, 55);
+  var pain = s.image('images/pain.png', 5, 45, 130, 55);
   pain.attr({opacity: 0});
 
   //killers text
-  var killers = s.image('images/killers.png', 15, 350, 200, 55);
+  var killers = s.image('images/killers.png', 5, 350, 200, 55);
 
   //prescription text
   var prescription = s.image('images/prescription.png', 103, -200, 193, 89);
@@ -39,52 +39,51 @@ $(document).ready(function(){
   var pledge = s.image('images/pledge.png', 15, 165, 74, 65);
   pledge.attr({opacity: 0});
 
-  var reality = s.image('images/reality.png', 160, -250, 140, 127);
+  var reality = s.image('images/reality.png', 165, -250, 134, 111);
 
-  var prevent = s.image('images/prevent.png', 1920/2, 17, 199, 64);
+  var prevent = s.image('images/prevent.png', 400, 35, 190, 59);
 
   //beginning animation
   var phase1 = function(){
     pain.animate({
       opacity: 1
-    },3000);
+    },2500);
   };
 
   var phase2 = function(){
-    dot1.animate({ y: 103 }, 500, mina.bounce );
-    dot2.animate({ y: 103 }, 750, mina.bounce );
-    dot3.animate({ y: 103 }, 1000, mina.bounce );
-    dot4.animate({ y: 103 }, 1250, mina.bounce );
+    dot1.animate({ y: 80 }, 500, mina.bounce );
+    dot2.animate({ y: 80 }, 750, mina.bounce );
+    dot3.animate({ y: 80 }, 1000, mina.bounce );
+    dot4.animate({ y: 80 }, 1250, mina.bounce );
   };
 
   var phase3 = function(){
-    killers.animate({ y: 150 },550, mina.easeout);
-    bottle.animate({ x: 200 },1300, mina.easein);
+    killers.animate({ y: 100 },550, mina.easeout);
   };
 
   var phase4 = function(){
-    rectangle.animate({x: 200}, 1000);
+    bottle.animate({ x: 170 },1000, mina.easein);
+    rectangle.animate({x: 220}, 1500, mina.easein );
+  };
 
-    var bottleMatrix2 = new Snap.Matrix();
-    bottleMatrix2.scale( 0.45 );
-    bottleMatrix2.translate( 280, 230);
+  var phase5 = function(){
+
+    var bottleMatrix = new Snap.Matrix();
+    bottleMatrix.scale( 0.45 );
+    bottleMatrix.translate( 330, 272);
 
     bottle.animate({
-      transform: bottleMatrix2
+      transform: bottleMatrix
     },1500, mina.easeout);
 
     //set animation of the background image
     var bgMatrix = new Snap.Matrix();
-    //bgMatrix.scale( 0.8 );
     bgMatrix.translate(-10,80);
     bg.animate({
       transform: bgMatrix
     }, 1500, mina.easeout);
 
-    pain.animate({
-      x: -3000
-    },3000, mina.easeout);
-
+    pain.animate({x: -3000},3000, mina.easeout);
     killers.animate({ x: -3000 }, 3000, mina.easeout );
 
     dot1.animate({ x: -3000 }, 3000, mina.easeout );
@@ -97,38 +96,40 @@ $(document).ready(function(){
     dot8.animate({ x: -3000 }, 3000, mina.easeout );
 
   };
-  var phase5 = function(){
-    rectangle.animate({x: 100}, 1000, mina.easein );
-    bg.animate({ x: -300 }, 1500, mina.easeout);
-
-    prescription.animate({y:35}, 400, mina.easein);
-  };
   var phase6 = function(){
+    rectangle.animate({x: 100}, 500, mina.easein );
+    bg.animate({ x: -300 }, 500, mina.easeout);
+  };
+  var phase7 = function(){
+    prescription.animate({y:35}, 600, mina.easein);
+  };
+  var phase8 = function(){
     prescription.animate({y:-250}, 500, mina.easeout);
     deaths.animate({y:35}, 400, mina.easein);
   };
-  var phase7 = function(){
-    deaths.animate({y:-250}, 350, mina.easeout);
-    bottle.animate({x: -63}, 500);
-  };
-
-  var phase8 = function(){
-    reality.animate({y:120}, 600, mina.easeout);
-    prevent.animate({x:99}, 800, mina.easeout);
-    pledge.animate({opacity: 1}, 4000, mina.easeout);
-  };
-
   var phase9 = function(){
-    pledge.animate({opacity:0},3250, mina.easeinout);
+    deaths.animate({y:-250}, 350, mina.easeout);
+    bottle.animate({x: -109}, 1250);
+  };
+
+  var phase10 = function(){
+    reality.animate({y:128}, 400, mina.easeout);
+  };
+
+  var phase11 = function(){
+    prevent.animate({x:102}, 550, mina.easeout);
+    pledge.animate({opacity: 1}, 4000, mina.easeout);
   };
 
   phase1();
   setTimeout(phase2, 3000);
-  setTimeout(phase3, 4000);
-  setTimeout(phase4, 5000);
-  setTimeout(phase5, 5500);
-  setTimeout(phase6, 13000);
-  setTimeout(phase7, 19000);
-  setTimeout(phase8, 22000);
-  //setTimeout(phase9, 21000);
+  setTimeout(phase3, 4500);
+  setTimeout(phase4, 6000);
+  setTimeout(phase5, 8000);
+  setTimeout(phase6, 10000);
+  setTimeout(phase7, 12000);
+  setTimeout(phase8, 15550);
+  setTimeout(phase9, 17100);
+  setTimeout(phase10, 18100);
+  setTimeout(phase11, 19600);
 });
